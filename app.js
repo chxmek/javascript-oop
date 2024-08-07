@@ -50,19 +50,22 @@ class User {
   name = "Avatar";
   password = 1234;
   constructor(n, p) {
-    this.name = n; // เรียกใช้งาน property ภายใน class >>> this.propertyName , เรียกใช้งานภายนอก class >>> obj_name.propertyName
+    console.log("เรียกใช้งาน Constructor");
+    this.name = n;
     this.password = p;
+    this.showDetail();     // เรียกใช้งาน method ภายใน class >>> this.methodName , เรียกใช้งานภายนอก class >>> obj_name.methodName
   }
+
   // ***method
   showDetail() {
     console.log(`ชื่อผู้ใช้ : ${this.name} , รหัสผ่าน : ${this.password}`);
   }
 }
 
-// สร้าง object
 const user1 = new User("Mek", 123);
-user1.showDetail();
 const user2 = new User("Jane", 456);
-user2.showDetail();
 const user3 = new User("Jojo", 789);
+
+user1.showDetail();
+user2.showDetail();
 user3.showDetail();
