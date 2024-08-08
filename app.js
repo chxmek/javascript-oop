@@ -253,7 +253,7 @@ class User {
     return this.#password;
   }
 
-  static addUser(newUser) {
+  static addUser(newUser) {           // สร้าง static method
     this.database.push(newUser);
   }
 }
