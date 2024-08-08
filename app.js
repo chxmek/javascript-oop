@@ -224,17 +224,64 @@
 // //  ----------------------------------------------------------------
 
 // ***Static >> ประยุกต์
+// class User {
+//   #name;
+//   #password;
+//   static database = [];         // กำหนดเป็น static
+//                                 // *hint static property ต้องใช้กับ static method เหมือนกัน
+//   constructor(n, p) {
+//     this.#name = n;
+//     this.#password = p;
+//   }
+
+//     showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+//   }
+
+//   // **setter ในรูปแบบของ accessor
+//   set Name(newName) {
+//     this.#name = newName;
+//   }
+//   set Password(newPassword) {
+//     this.#password = newPassword;
+//   }
+//   // **getter ในรูปแบบของ accessor
+//   get Name() {
+//     return this.#name;
+//   }
+//   get Password() {
+//     return this.#password;
+//   }
+
+//   static addUser(newUser) {             // สร้าง static method
+//     this.database.push(newUser);
+//   }
+// }
+
+// // สร้าง user
+// const user1 = new User("Mek", 123);
+// const user2 = new User("Jojo", 456);
+// // เก็บข้อมูล user
+// User.addUser(user1);
+// User.addUser(user2);
+// // แสดงข้อมูล user
+// User.database.forEach((user) => {       // forEach เป็น method ที่ใช้เพื่อวนลูปผ่านแต่ละค่าใน array
+//   user.showDetail();                    // (user) => { ... } เป็นฟังก์ชันที่ถูกส่งไปยัง forEach ซึ่งจะถูกเรียกใช้สำหรับแต่ละ user ใน User.database
+// })                                      // ฟังก์ชัน showDetail() เป็นฟังก์ชันที่ถูกเรียกใช้สำหรับแต่ละ user
+// //  ----------------------------------------------------------------
+
+// ***Inheritance(การสืบทอดคุณสมบัติ) >> ทำการสร้างสิ่งใหม่ขึ้นด้วยการสืบทอด หรือรับเอา(inherit)คุณสมบัติบางอย่างมาจากสิ่งเดิมที่มีอยู่แล้ว
+// ***สามารถนำสิ่งที่เคยสร้างไว้แล้วกลับมาใช้ใหม่(re-use)ได้ ***ช่วยประหยัดเวลาในการทำงานลง
 class User {
   #name;
   #password;
-  static database = [];         // กำหนดเป็น static
 
   constructor(n, p) {
     this.#name = n;
     this.#password = p;
   }
 
-    showDetail() {
+  showDetail() {
     console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
   }
 
@@ -252,21 +299,12 @@ class User {
   get Password() {
     return this.#password;
   }
-
-  static addUser(newUser) {           // สร้าง static method
-    this.database.push(newUser);
-  }
 }
+class Teacher {
 
-// สร้าง user
-const user1 = new User("Mek", 123);
-const user2 = new User("Jojo", 456);
-// เก็บข้อมูล user
-User.addUser(user1);
-User.addUser(user2);
-// แสดงข้อมูล user
-User.database.forEach((user) => {
-  user.showDetail();
-})
+}
+class Student {
+  
+}
 
 //  ----------------------------------------------------------------
