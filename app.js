@@ -112,8 +112,46 @@
 // // ----------------------------------------------------------------
 
 // ***Getter, Setter <Method>(กรณีที่กำหนดค่า property เป็น private) >> Getter: ดึงค่าใน property มาใช้, Setter: เปลี่ยนแปลงค่าใน property
+// class User {
+//   // private
+//   #name;
+//   #password;
+//   constructor(n, p) {
+//     this.#name = n;
+//     this.#password = p;
+//   }
+//   showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+//   }
+//   // **setter
+//   setName(newName) {
+//     this.#name = newName;           // กำหนดหรือเปลี่ยนค่า property (เปลี่ยน name)
+//   }
+//   setPassword(newPassword) {
+//     this.#password = newPassword;   // กำหนดหรือเปลี่ยนค่า property (เปลี่ยน password)
+//   }
+//   // **getter
+//   getName() {
+//     return this.#name;              // ดึง property มาใช้งานโดยเฉพาะ (ดึง name)
+//   }
+//   getPassword() {
+//     return this.#password;          // ดึง property มาใช้งานโดยเฉพาะ (ดึง password)
+//   }
+// }
+
+// const user1 = new User("Mek", 123);
+
+// user1.setName("Mek Chawanwit");
+// user1.setPassword("456");
+// user1.showDetail();
+// console.log(user1.getName());
+// console.log(user1.getPassword());
+// //  ----------------------------------------------------------------
+
+// ***Accessor >> ตำสั่งที่ช่วยให้สามารถจัดการ property ได้ง่ายมากขึ้น
+// ***โดยสามารถกำหนดได้ว่าต้องการทำงานกับ property ใด มีองค์ประกอบ 2 ส่วนคือ
+// ***1. Get >> ตัวช่วยสำหรับเรียกดูข้อมูลใน property 2. Set >> ตัวช่วยสำหรับกำหนดหรือเขียนข้อมูลใน property 
 class User {
-  // private
   #name;
   #password;
   constructor(n, p) {
