@@ -46,26 +46,30 @@
 // console.log(user3.password)
 // // ----------------------------------------------------------------
 
-class User {
-  name = "Avatar";
-  password = 1234;
-  constructor(n, p) {
-    console.log("เรียกใช้งาน Constructor");
-    this.name = n;
-    this.password = p;
-    this.showDetail();     // *เรียกใช้คล้าย property* เรียกใช้งาน method ภายใน class >>> this.methodName , เรียกใช้งานภายนอก class >>> obj_name.methodName
-  }
+// class User {
+//   name = "Avatar";
+//   password = 1234;
+//   constructor(n, p) {
+//     console.log("เรียกใช้งาน Constructor");
+//     this.name = n;
+//     this.password = p;
+//     this.showDetail();     // *เรียกใช้คล้าย property* เรียกใช้งาน method ภายใน class >>> this.methodName , เรียกใช้งานภายนอก class >>> obj_name.methodName
+//   }
 
-  // ***method
-  showDetail() {
-    console.log(`ชื่อผู้ใช้ : ${this.name} , รหัสผ่าน : ${this.password}`);
-  }
-}
+//   // ***method
+//   showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.name} , รหัสผ่าน : ${this.password}`);
+//   }
+// }
 
-const user1 = new User("Mek", 123);
-const user2 = new User("Jane", 456);
-const user3 = new User("Jojo", 789);
+// const user1 = new User("Mek", 123);
+// const user2 = new User("Jane", 456);
+// const user3 = new User("Jojo", 789);
 
-user1.showDetail();
-user2.showDetail();
-user3.showDetail();
+// user1.showDetail();
+// user2.showDetail();
+// user3.showDetail();
+// //  ----------------------------------------------------------------
+
+// ***Encapsulation(การห่อหุ้ม) >> Access Modifier >> 1.Public: ประกาศเป็นสาธารณะ, 2.Protected(_property): ประกาศระดับเข้าถึงแบบสืบทอด(inheritance)เช่น เพื่อนในเฟสสามารถเห็นโพส, 3.Private(#property): ประกาศระดับเข้าถึงแบบเข้มงวดเช่น แค่เจ้าของโพสเท่านั้น
+
