@@ -140,6 +140,7 @@ class User {
 }
 
 const user1 = new User("Mek", 123);
+
 user1.setName("Mek Chawanwit");
 user1.setPassword("456");
 user1.showDetail();
