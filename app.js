@@ -53,7 +53,7 @@
 //     console.log("เรียกใช้งาน Constructor");
 //     this.name = n;
 //     this.password = p;
-//     this.showDetail();     // *เรียกใช้คล้าย property* เรียกใช้งาน method ภายใน class >>> this.methodName , เรียกใช้งานภายนอก class >>> obj_name.methodName
+//     this.showDetail();     // <เรียกใช้คล้าย property> เรียกใช้งาน method ภายใน class >>> this.methodName , เรียกใช้งานภายนอก class >>> obj_name.methodName
 //   }
 
 //   // ***method
@@ -71,5 +71,78 @@
 // user3.showDetail();
 // //  ----------------------------------------------------------------
 
-// ***Encapsulation(การห่อหุ้ม) >> Access Modifier >> 1.Public: ประกาศเป็นสาธารณะ, 2.Protected(_property): ประกาศระดับเข้าถึงแบบสืบทอด(inheritance)เช่น เพื่อนในเฟสสามารถเห็นโพส, 3.Private(#property): ประกาศระดับเข้าถึงแบบเข้มงวดเช่น แค่เจ้าของโพสเท่านั้น
+// ***Encapsulation(การห่อหุ้ม) >> Access Modifier >> 1.Public: ประกาศเป็นสาธารณะ, 2.Protected(_property/_method): ประกาศระดับเข้าถึงแบบสืบทอด(inheritance)เช่น เพื่อนในเฟสสามารถเห็นโพส, 3.Private(#property/#method): ประกาศระดับเข้าถึงแบบเข้มงวดเช่น แค่เจ้าของโพสเท่านั้น
+// class User {
+//   // **public
+//   name
+//   password
+//   constructor(n, p) {
+//     this.name = n;
+//     this.password = p;
+//   }
 
+//   showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.name} , รหัสผ่าน : ${this.password}`);
+//   }
+// }
+
+// const user1 = new User("Mek", 123);
+// user1.name = "Mek*Hacker*";         // โดน hack ง่ายๆ
+// user1.password = "5555";
+// user1.showDetail();
+//  //  ----------------------------------------------------------------
+// class User {
+//   // **private
+//   #name
+//   #password
+//   constructor(n, p) {
+//     this.#name = n;
+//     this.#password = p;
+//   }
+
+//   showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+//   }
+// }
+
+// const user1 = new User("Mek", 123);
+// user1.name = "Mek*Hacker*";         // โดน hack ยาก
+// user1.password = "5555";
+// user1.showDetail();
+// // ----------------------------------------------------------------
+
+// ***Getter, Setter <Method>(กรณีที่กำหนดค่า property เป็น private) >> Getter: ดึงค่าใน property มาใช้, Setter: เปลี่ยนแปลงค่าใน property
+class User {
+  // private
+  #name;
+  #password;
+  constructor(n, p) {
+    this.#name = n;
+    this.#password = p;
+  }
+  showDetail() {
+    console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+  }
+  // **setter
+  setName(newName) {
+    this.#name = newName;           // เปลี่ยนค่า property (เปลี่ยน name)
+  }
+  setPassword(newPassword) {
+    this.#password = newPassword;   // เปลี่ยนค่า property (เปลี่ยน password)
+  }
+  // **getter
+  getName() {
+    return this.#name;              // ดึง property มาใช้งานโดยเฉพาะ (ดึง name)
+  }
+  getPassword() {
+    return this.#password;          // ดึง property มาใช้งานโดยเฉพาะ (ดึง password)
+  }
+}
+
+const user1 = new User("Mek", 123);
+user1.setName("Mek Chawanwit");
+user1.setPassword("456");
+user1.showDetail();
+console.log(user1.getName());
+console.log(user1.getPassword());
+//  ----------------------------------------------------------------
