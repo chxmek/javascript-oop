@@ -272,6 +272,47 @@
 
 // ***Inheritance(การสืบทอดคุณสมบัติ) >> ทำการสร้างสิ่งใหม่ขึ้นด้วยการสืบทอด หรือรับเอา(inherit)คุณสมบัติบางอย่างมาจากสิ่งเดิมที่มีอยู่แล้ว
 // ***สามารถนำสิ่งที่เคยสร้างไว้แล้วกลับมาใช้ใหม่(re-use)ได้ ***ช่วยประหยัดเวลาในการทำงานลง
+// class User {
+//   #name;
+//   #password;
+
+//   constructor(n, p) {
+//     this.#name = n;
+//     this.#password = p;
+//   }
+
+//   showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+//   }
+
+//   // **setter ในรูปแบบของ accessor
+//   set Name(newName) {
+//     this.#name = newName;
+//   }
+//   set Password(newPassword) {
+//     this.#password = newPassword;
+//   }
+//   // **getter ในรูปแบบของ accessor
+//   get Name() {
+//     return this.#name;
+//   }
+//   get Password() {
+//     return this.#password;
+//   }
+// }
+// class Teacher extends User {      // class Teacher(คลาสลูก) สืบทอดคถณสมบัติมาจาก class User(คลาสแม่)
+// }
+// class Student extends User {      // class Student(คลาสลูก) สืบทอดคถณสมบัติมาจาก class User(คลาสแม่)
+// }
+
+// const user1 = new Teacher("teacher1", 1234)
+// const user2 = new Student("student1", 5678)
+
+// user1.showDetail()
+// user2.showDetail()
+// //  ----------------------------------------------------------------
+
+// ***Super >> เป็นคำสั่งสำหรับเรียกใช้งานเมื่อต้องการคุณสมบัติต่างๆ ที่ทำงานอยู่ใน class แม่ เช่น construtor เป็นต้น
 class User {
   #name;
   #password;
@@ -300,11 +341,20 @@ class User {
     return this.#password;
   }
 }
-class Teacher {
-
+class Teacher extends User {      // class Teacher สืบทอดคถณสมบัติมาจาก class User
+  constructor (){
+    console.log("ฉันเป็นครู")
+  }
 }
-class Student {
-  
+class Student extends User {      // class Student สืบทอดคถณสมบัติมาจาก class User
+  constructor (){
+    console.log("ฉันเป็นนักเรียน")
+  }
 }
 
+const user1 = new Teacher("teacher1", 1234)
+const user2 = new Student("student1", 5678)
+
+user1.showDetail()
+user2.showDetail()
 //  ----------------------------------------------------------------
