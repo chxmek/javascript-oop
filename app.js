@@ -341,20 +341,33 @@ class User {
     return this.#password;
   }
 }
-class Teacher extends User {      // class Teacher สืบทอดคถณสมบัติมาจาก class User
-  constructor (){
-    console.log("ฉันเป็นครู")
+class Teacher extends User {                  // class Teacher สืบทอดคถณสมบัติมาจาก class User
+  #course;
+  constructor(n, p, course) {
+    super(n, p);                              // constructor จาก class แม่ // ส่งค่าจาก parameter ไปให้คลาสแม่
+    this.#course = course;
+  }
+  showCourse() {
+    console.log(`สอนวิชา: ${this.#course}`);
   }
 }
-class Student extends User {      // class Student สืบทอดคถณสมบัติมาจาก class User
-  constructor (){
-    console.log("ฉันเป็นนักเรียน")
+class Student extends User {                   // class Student สืบทอดคถณสมบัติมาจาก class User
+  #score;
+  constructor(n, p, score) {
+    super(n, p);                               // constructoe จาก class แม่ // ส่งค่าจาก parameter ไปให้คลาสแม่
+    this.#score = score;
+  }
+  showScore() {
+    console.log(`ได้คะแนน: ${this.#score}`)
   }
 }
 
-const user1 = new Teacher("teacher1", 1234)
-const user2 = new Student("student1", 5678)
+const user1 = new Teacher("teacher1", 1234, "math");
+const user2 = new Student("student1", 5678, "10/10");
 
-user1.showDetail()
-user2.showDetail()
+user1.showDetail();
+user1.showCourse();
+user2.showDetail();
+user2.showScore();
+
 //  ----------------------------------------------------------------
