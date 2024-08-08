@@ -150,7 +150,7 @@
 
 // ***Accessor >> ตำสั่งที่ช่วยให้สามารถจัดการ property ได้ง่ายมากขึ้น
 // ***โดยสามารถกำหนดได้ว่าต้องการทำงานกับ property ใด มีองค์ประกอบ 2 ส่วนคือ
-// ***1.Get >> ตัวช่วยสำหรับเรียกดูข้อมูลใน property 2.Set >> ตัวช่วยสำหรับกำหนดหรือเขียนข้อมูลใน property 
+// ***1.Get >> ตัวช่วยสำหรับเรียกดูข้อมูลใน property 2.Set >> ตัวช่วยสำหรับกำหนดหรือเขียนข้อมูลใน property
 // class User {
 //   #name;
 //   #password;
@@ -186,16 +186,58 @@
 // //  ----------------------------------------------------------------
 
 // ***Static >> กำหนดการเข้าถึง property หรือ method ภายใน class ได้โดยตรง ไม่ต้องสร้าง object
+// class User {
+//   #name;
+//   #password;
+//   static type = "ผู้ใช้งานระบบ";         // กำหนดเป็น static >> property type นี้จะสามารถเข้าถึงได้ผ่านการอ้างอิงชื่อ class แทนการอ้างอิงชื่อ object
+
+//   constructor(n, p) {
+//     this.#name = n;
+//     this.#password = p;
+//   }
+//   showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+//   }
+//   // **setter ในรูปแบบของ accessor
+//   set Name(newName) {
+//     this.#name = newName;
+//   }
+//   set Password(newPassword) {
+//     this.#password = newPassword;
+//   }
+//   // **getter ในรูปแบบของ accessor
+//   get Name() {
+//     return this.#name;
+//   }
+//   get Password() {
+//     return this.#password;
+//   }
+
+//   static showType() {
+//     console.log("ฉันเป็นผู้ใช้งานระบบ")
+//   }
+// }
+
+// const user1 = new User("Mek", 123);
+// console.log(User.type);                // แสดงค่า property(static) ผ่าน class
+// User.showType();                       // เรียกใช้งาน method(static) ผ่าน class
+// //  ----------------------------------------------------------------
+
+// ***Static >> ประยุกต์
 class User {
   #name;
   #password;
-  static type = "ผู้ใช้งานระบบ";   // กำหนดเป็น static
-  
+  static database = [];         // กำหนดเป็น static
+
   constructor(n, p) {
     this.#name = n;
     this.#password = p;
   }
- 
+
+    showDetail() {
+    console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+  }
+
   // **setter ในรูปแบบของ accessor
   set Name(newName) {
     this.#name = newName;
@@ -210,8 +252,21 @@ class User {
   get Password() {
     return this.#password;
   }
+
+  static addUser(newUser) {
+    this.database.push(newUser);
+  }
 }
 
+// สร้าง user
 const user1 = new User("Mek", 123);
-user1.type
+const user2 = new User("Jojo", 456);
+// เก็บข้อมูล user
+User.addUser(user1);
+User.addUser(user2);
+// แสดงข้อมูล user
+User.database.forEach((user) => {
+  user.showDetail();
+})
+
 //  ----------------------------------------------------------------
