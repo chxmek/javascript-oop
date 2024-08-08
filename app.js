@@ -53,7 +53,7 @@ class User {
     console.log("เรียกใช้งาน Constructor");
     this.name = n;
     this.password = p;
-    this.showDetail();     // เรียกใช้งาน method ภายใน class >>> this.methodName , เรียกใช้งานภายนอก class >>> obj_name.methodName
+    this.showDetail();     // *เรียกใช้คล้าย property* เรียกใช้งาน method ภายใน class >>> this.methodName , เรียกใช้งานภายนอก class >>> obj_name.methodName
   }
 
   // ***method
