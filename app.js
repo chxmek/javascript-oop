@@ -150,38 +150,68 @@
 
 // ***Accessor >> ตำสั่งที่ช่วยให้สามารถจัดการ property ได้ง่ายมากขึ้น
 // ***โดยสามารถกำหนดได้ว่าต้องการทำงานกับ property ใด มีองค์ประกอบ 2 ส่วนคือ
-// ***1. Get >> ตัวช่วยสำหรับเรียกดูข้อมูลใน property 2. Set >> ตัวช่วยสำหรับกำหนดหรือเขียนข้อมูลใน property 
+// ***1.Get >> ตัวช่วยสำหรับเรียกดูข้อมูลใน property 2.Set >> ตัวช่วยสำหรับกำหนดหรือเขียนข้อมูลใน property 
+// class User {
+//   #name;
+//   #password;
+//   constructor(n, p) {
+//     this.#name = n;
+//     this.#password = p;
+//   }
+//   showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+//   }
+//   // **setter ในรูปแบบของ accessor
+//   set Name(newName) {
+//     this.#name = newName;
+//   }
+//   set Password(newPassword) {
+//     this.#password = newPassword;
+//   }
+//   // **getter ในรูปแบบของ accessor
+//   get Name() {
+//     return this.#name;
+//   }
+//   get Password() {
+//     return this.#password;
+//   }
+// }
+
+// const user1 = new User("Mek", 123);
+// user1.Name = "Mek Chawanwit"          // กำหนดค่าและเรียกใช้งาน setter method Name
+// user1.Password = "456"                // กำหนดค่าและเรียกใช้งาน setter method Password
+// console.log(user1.Name)               // แสดง name จาก getter method Name
+// console.log(user1.Password)           // แสดง password จาก getter method Password
+//                                       // *hint ถ้าไม่มีเครื่องหมาย '=' แสดงว่าเป็นการใช้ getter ค่ามา
+// //  ----------------------------------------------------------------
+
+// ***Static >> กำหนดการเข้าถึง property หรือ method ภายใน class ได้โดยตรง ไม่ต้องสร้าง object
 class User {
   #name;
   #password;
+  static type = "ผู้ใช้งานระบบ";   // กำหนดเป็น static
+  
   constructor(n, p) {
     this.#name = n;
     this.#password = p;
   }
-  showDetail() {
-    console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+ 
+  // **setter ในรูปแบบของ accessor
+  set Name(newName) {
+    this.#name = newName;
   }
-  // **setter
-  setName(newName) {
-    this.#name = newName;           // เปลี่ยนค่า property (เปลี่ยน name)
+  set Password(newPassword) {
+    this.#password = newPassword;
   }
-  setPassword(newPassword) {
-    this.#password = newPassword;   // เปลี่ยนค่า property (เปลี่ยน password)
+  // **getter ในรูปแบบของ accessor
+  get Name() {
+    return this.#name;
   }
-  // **getter
-  getName() {
-    return this.#name;              // ดึง property มาใช้งานโดยเฉพาะ (ดึง name)
-  }
-  getPassword() {
-    return this.#password;          // ดึง property มาใช้งานโดยเฉพาะ (ดึง password)
+  get Password() {
+    return this.#password;
   }
 }
 
 const user1 = new User("Mek", 123);
-
-user1.setName("Mek Chawanwit");
-user1.setPassword("456");
-user1.showDetail();
-console.log(user1.getName());
-console.log(user1.getPassword());
+user1.type
 //  ----------------------------------------------------------------
