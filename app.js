@@ -443,7 +443,7 @@
  */
 class User {
   // protected
-  _name;                        // *ประการ property เป็น protected เพื่อให้ classลูก สามารถเข้าถึงได้
+  _name;                        // *ประกาศ property เป็น protected เพื่อให้ classลูก สามารถเข้าถึงได้
   _password;
 
   constructor(n, p) {
