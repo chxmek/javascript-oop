@@ -432,8 +432,8 @@
 // const user1 = new Teacher("teacher1", 1234, "เขียนโปรแกรม");       // สร้าง object จาก class Teacher
 // const user2 = new Student("student1", 5678, "100");
 
-// user1.showDetail();                                               // เรียกใช้งาน method ใน class Teacher
-// user2.showDetail();                                               // เรียกใช้งาน method ใน class Student แต่เมื่อไม่มี method showDetail ใน class Student จะไปเรียกใช้ใน class แม่แทน
+// user1.showDetail();                                               // เรียกใช้งาน method showDetail ใน class Teacher
+// user2.showDetail();                                               // เรียกใช้งาน method showDetail ใน class Student แต่เมื่อไม่มี method showDetail ใน class Student จะไปเรียกใช้ใน class แม่แทน
 // //  ----------------------------------------------------------------
 
 /*
@@ -443,7 +443,7 @@
  */
 class User {
   // protected
-  _name;                        // *ประกาศ property เป็น protected เพื่อให้ classลูก สามารถเข้าถึงได้
+  _name;              // ประกาศ property เป็น protected เพื่อให้ classลูก สามารถเข้าถึงได้
   _password;
 
   constructor(n, p) {
