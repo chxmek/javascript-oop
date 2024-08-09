@@ -313,6 +313,134 @@
 // //  ----------------------------------------------------------------
 
 // ***Super >> เป็นคำสั่งสำหรับเรียกใช้งานเมื่อต้องการคุณสมบัติต่างๆ ที่ทำงานอยู่ใน class แม่ เช่น construtor เป็นต้น
+// class User {
+//   #name;
+//   #password;
+
+//   constructor(n, p) {
+//     this.#name = n;
+//     this.#password = p;
+//   }
+
+//   showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+//   }
+
+//   // **setter ในรูปแบบของ accessor
+//   set Name(newName) {
+//     this.#name = newName;
+//   }
+//   set Password(newPassword) {
+//     this.#password = newPassword;
+//   }
+//   // **getter ในรูปแบบของ accessor
+//   get Name() {
+//     return this.#name;
+//   }
+//   get Password() {
+//     return this.#password;
+//   }
+// }
+// class Teacher extends User {                  // class Teacher สืบทอดคถณสมบัติมาจาก class User
+//   #course;
+//   constructor(n, p, course) {
+//     super(n, p);                              // constructor จาก class แม่ // ส่งค่าจาก parameter ไปให้คลาสแม่
+//     this.#course = course;
+//   }
+//   showCourse() {
+//     console.log(`สอนวิชา: ${this.#course}`);
+//   }
+// }
+// class Student extends User {                   // class Student สืบทอดคถณสมบัติมาจาก class User
+//   #score;
+//   constructor(n, p, score) {
+//     super(n, p);                               // constructoe จาก class แม่ // ส่งค่าจาก parameter ไปให้คลาสแม่
+//     this.#score = score;
+//   }
+//   showScore() {
+//     console.log(`ได้คะแนน: ${this.#score}`)
+//   }
+// }
+
+// const user1 = new Teacher("teacher1", 1234, "math");
+// const user2 = new Student("student1", 5678, "10/10");
+
+// user1.showDetail();
+// user1.showCourse();
+// user2.showDetail();
+// user2.showScore();
+// //  ----------------------------------------------------------------
+
+/*
+ *Polymorphism(การพ้องรูป) >> ความสามารถในการตอบสนองต่อสิ่งเดียวกันด้วยวิธีที่แตกต่างกัน
+ * กล่าวคือวัตถุนั้นสามารถกำหนดกระบวนการทำงานได้หลายรูปแบบ 
+ * โดยเพิ่มเติมกระบวนการทำงานจากสิ่งเดิมที่มีอยู่แล้ว
+ * ** ข้อดีคือ ทำให้โปรแกรมสามารถปรับเปลี่ยนหรือเพิ่มเติมการทำงานได้ง่ายขึ้น ** 
+ * Ex. คำว่า "กา" สามารถตีความหมายได้หลายรูปแบบเช่น กา(ที่เป็นสัตว์), กา(กาข้อสอบ) และ กา(กาต้มน้ำ) เป็นต้น
+ * "ข้อความเดียวกันแต่กระบวนการทำงานภายในแตกต่างกันนั้น เรียกว่า Polymorphism(การพ้องรูป)"
+ * Overriding Method >> "method ของ class ลูก" ที่มีชื่อเหมือนกับ "method ของ class แม่" (เป็นผลมาจากคุณสมบัติ OO คือ inheritance) แต่มีกระบวนการทำงานด้านใน "แตกต่างกัน"
+ */
+// class User {
+//   #name;
+//   #password;
+
+//   constructor(n, p) {
+//     this.#name = n;
+//     this.#password = p;
+//   }
+
+//   showDetail() {
+//     console.log(`ชื่อผู้ใช้ : ${this.#name} , รหัสผ่าน : ${this.#password}`);
+//   }
+
+//   // **setter ในรูปแบบของ accessor
+//   set Name(newName) {
+//     this.#name = newName;
+//   }
+//   set Password(newPassword) {
+//     this.#password = newPassword;
+//   }
+//   // **getter ในรูปแบบของ accessor
+//   get Name() {
+//     return this.#name;
+//   }
+//   get Password() {
+//     return this.#password;
+//   }
+// }
+// class Teacher extends User {
+//   #course;
+//   constructor(n, p, course) {
+//     super(n, p);
+//     this.#course = course;
+//   }
+//   showDetail() {
+//     console.log("ฉันเป็นครู สอนวิชา: " + this.#course)                // สร้าง method showDetail(ชื่อ method เหมือน class แม่) เพื่อเรียกใช้งานข้อมูลจาก object user1
+//   }
+// }
+// class Student extends User {
+//   #score;
+//   constructor(n, p, score) {
+//     super(n, p);
+//     this.#score = score;
+//   }
+//   // showDetail() {
+//   //   console.log("ฉันเป็นนักเรียน สอบได้: " + this.#score + " คะแนน")   // *เมื่อไม่มี method showDetail ใน class ลูก ระบบจะทำการเรียกใช้ method showDetail จาก class แม่ โดยอัตโนมัติ
+//   // }
+// }
+
+// const user1 = new Teacher("teacher1", 1234, "เขียนโปรแกรม");       // สร้าง object จาก class Teacher
+// const user2 = new Student("student1", 5678, "100");
+
+// user1.showDetail();                                               // เรียกใช้งาน method ใน class Teacher
+// user2.showDetail();                                               // เรียกใช้งาน method ใน class Student แต่เมื่อไม่มี method showDetail ใน class Student จะไปเรียกใช้ใน class แม่แทน
+// //  ----------------------------------------------------------------
+
+/* 
+* Protected Access Modifier >> เป็นการประกาศ ระดับการเข้าถึงที่เกี่ยวข้องกับเรื่องการสืบทอด(Inheritance) 
+* ทำให้ Class นั้นๆ สามารถเรียกใช้งานสมาชิกของ Class ที่ถูกกำหนดเป็น Protected ได้
+* อ้างอิงด้วยเครื่องหมาย(_)
+*/
 class User {
   #name;
   #password;
@@ -341,33 +469,30 @@ class User {
     return this.#password;
   }
 }
-class Teacher extends User {                  // class Teacher สืบทอดคถณสมบัติมาจาก class User
+class Teacher extends User {
   #course;
   constructor(n, p, course) {
-    super(n, p);                              // constructor จาก class แม่ // ส่งค่าจาก parameter ไปให้คลาสแม่
+    super(n, p);
     this.#course = course;
   }
-  showCourse() {
-    console.log(`สอนวิชา: ${this.#course}`);
+  showDetail() {
+    console.log("ฉันเป็นครู สอนวิชา: " + this.#course)                // *สร้าง method showDetail(ชื่อ method เหมือน class แม่) เพื่อเรียกใช้งานข้อมูลจาก object user1
   }
 }
-class Student extends User {                   // class Student สืบทอดคถณสมบัติมาจาก class User
+class Student extends User {
   #score;
   constructor(n, p, score) {
-    super(n, p);                               // constructoe จาก class แม่ // ส่งค่าจาก parameter ไปให้คลาสแม่
+    super(n, p);
     this.#score = score;
   }
-  showScore() {
-    console.log(`ได้คะแนน: ${this.#score}`)
-  }
+  // showDetail() {
+  //   console.log("ฉันเป็นนักเรียน สอบได้: " + this.#score + " คะแนน")   // *เมื่อไม่มี method showDetail ใน class ลูก ระบบจะทำการเรียกใช้ method showDetail จาก class แม่ โดยอัตโนมัติ
+  // }
 }
 
-const user1 = new Teacher("teacher1", 1234, "math");
-const user2 = new Student("student1", 5678, "10/10");
+const user1 = new Teacher("teacher1", 1234, "เขียนโปรแกรม");       // *สร้าง object จาก class Teacher
+const user2 = new Student("student1", 5678, "100");
 
-user1.showDetail();
-user1.showCourse();
-user2.showDetail();
-user2.showScore();
-
+user1.showDetail();                                               // *เรียกใช้งาน method ใน class Teacher
+user2.showDetail();                                               // *เรียกใช้งาน method ใน class Student แต่เมื่อไม่มี method showDetail ใน class Student จะไปเรียกใช้ใน class แม่แทน
 //  ----------------------------------------------------------------
